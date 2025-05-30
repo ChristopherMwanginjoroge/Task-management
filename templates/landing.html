@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+
+<center><h1 class="main-title">Welcome to the Task Management App</h1></center>
+<br>
+<center><h2>Please login or sign up to continue</h2></center>
+
+<br>
+<center>
+    <a href="{% url 'login_user' %}" class="btn btn-outline-primary">Login</a>
+    <br>
+    <br>
+        <br>
+    
+
+    <a href="{% url 'register_user' %}" class="btn btn-outline-primary">Sign Up</a>
+</center>
+
+
+{% endblock %}

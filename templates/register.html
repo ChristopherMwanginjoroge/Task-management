@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  body{
+    background-color: #0d0c0c;
+  }
+  div{
+    opacity: 0.4;
+  }
+</style>
+
+<div class="container shadow rounded mt-5 " style="width: 450px; height: 570px;" >
+    <center>
+      <br>
+        
+        <h1>
+          Register
+        </h1>
+
+        <br>
+
+        <a  href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger w-100">
+            <img src="https://developers.google.com/identity/images/g-logo.png" style="width:20px; margin-right:10px;">
+            Sign in with Google
+          </a>
+          <!-- <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary w-100">
+            <img src="https://www.freepnglogos.com/uploads/facebook-logo-icon/facebook-logo-icon-file-facebook-icon-svg-wikimedia-commons-4.png" style="width:20px; margin-right:10px;">
+            Sign in with Facebook
+            </a> -->
+            <br>
+            <br>
+
+          <a href="{% url 'social:begin' 'github' %}" class="btn btn-dark w-100">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" style="width:20px; margin-right:10px;">
+            Sign in with Github
+          </a>
+
+          <br> 
+          <br>  
+
+
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <!-- <label for="{{ form.email.id_for_label }}" class="form-label">Email address:</label> -->
+                {{ form.email }}
+                
+                {% if form.email.errors %}
+                  <div class="text-danger">
+                    {% for error in form.email.errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+              
+
+              <div class ="mb-3">
+                <!-- <label for="{{ form.username.id_for_label }}" class="form-label">Username:</label> -->
+                {{ form.username }}
+                {% if form.username.errors %}
+                <div class="text-danger">
+                    {% for error in form.email.errors %}
+                    {{ error }}
+                   {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+              
+
+
+              <div class="mb-3">
+                <!-- <label for="{{ form.password1.id_for_label }}" class="form-label">Password:</label> -->
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                <div class="text-danger">
+                    {% for error in form.email.errors %}
+                    {{ error }}
+                   {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+
+                <div class="mb-3">
+                    <!-- <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Password:</label> -->
+                    {{ form.password2}}
+                    {% if form.password2.errors %}
+                    <div class="text-danger">
+                        {% for error in form.email.errors %}
+                        {{ error }}
+                       {% endfor %}
+                    </div>
+                    {% endif %}
+                </div> 
+                <br>        
+              <center>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <br>
+                <br>
+                <a href="{% url 'login_user' %}" class="btn btn-secondary">Already have an account? <span style="color: blue;">Login</span></a>
+              </center>
+    </center>
+</div>
+{% endblock %}
